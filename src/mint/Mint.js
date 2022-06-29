@@ -1,7 +1,6 @@
-import { Error } from "@mui/icons-material"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import GetMint, {DoMint} from "./MintService"
-import { Piece, ContainerSingle } from "../piece/Piece.js"
+import { ContainerSingle } from "../piece/Piece.js"
 import { Card, CardHeader, Button, Grid, Container, Snackbar, Alert } from "@mui/material"
 import { useNavigate } from "react-router-dom";
 import * as fcl from "@onflow/fcl"
@@ -29,6 +28,10 @@ function Mint({mintId}) {
     let handleClosed = (event) => {
         event.preventDefault()
         setWaitForTxSnack(false)
+    }
+    let handleErrClosed = (event) => {
+        event.preventDefault()
+        setErr(false)
     }
     useEffect(() => {
         GetMint(mintId).then(p => {
@@ -72,6 +75,11 @@ function Mint({mintId}) {
             
         </Grid> 
         <Snackbar open={waitForTxSnack} autoHideDuration={10000} onClose={handleClosed}>
+            <Alert severity="info" sx={{ width: '100%' }}>
+                    Waiting for tx {mintTx} to be sealed!
+            </Alert>
+        </Snackbar>
+        <Snackbar open={err} autoHideDuration={10000} onClose={handleErrClosed}>
             <Alert severity="info" sx={{ width: '100%' }}>
                     Waiting for tx {mintTx} to be sealed!
             </Alert>

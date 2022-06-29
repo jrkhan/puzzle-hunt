@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import GetLatestBlock from './GetLatestBlock';
 import {SendTransaction, SendQuery, SignMessage } from './SendTransaction';
 import Container from '@mui/material/Container';
@@ -8,7 +7,7 @@ import Puzzle from './puzzle/IndividualPiece'
 import Mint from './mint/Mint'
 import CollectionStatus from './Collection'
 import { Grid, Paper } from '@mui/material';
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import TestCanvas from './paper/TestPaper';
 
 const darkTheme = createTheme({

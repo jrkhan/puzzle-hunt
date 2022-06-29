@@ -3,8 +3,6 @@
 import * as fcl from "@onflow/fcl"
 import { Buffer } from 'buffer';
 
-const url = 'https://mint-fuzzle-piece-on-demand-ijlbsclomq-uc.a.run.app/'
-
 async function signMessage(message) {
     let msg = Buffer.from(message).toString("hex")
     let res = await fcl.currentUser.signUserMessage(msg)

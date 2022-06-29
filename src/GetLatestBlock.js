@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import * as fcl from '@onflow/fcl'
-import styled from 'styled-components'
 import Card from '@mui/material/Card';
 import ReactHighlight from 'react-highlight';
 import { Button } from '@mui/material';

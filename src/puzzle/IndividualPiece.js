@@ -1,8 +1,7 @@
 import { Error } from "@mui/icons-material"
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import GetPiece from "./PieceService"
 import BuildPiece from './CutoutPiece'
-import { Paper } from "@mui/material"
 
 function PuzzleTable({pieceId}) {
     let [err, setErr] = useState(null)

@@ -1,7 +1,5 @@
 import {PieceData} from '../queries/PieceQuery'
 import { useEffect, useState } from "react";
-import { Chip } from "@mui/material"
-import ExtensionIcon from '@mui/icons-material/Extension';
 import { TurtlePiece, TurtlePieceSingle } from './TurtlePuzzle'
 import styled from "styled-components";
 
@@ -26,7 +24,7 @@ function Piece(props) {
             setPuzzleId(res.puzzleId)
             setPieceId(res.pieceId)
         })
-    }, [])
+    }, [addr, id])
     
     return <Container>
         {puzzleId && <TurtlePiece puzzleId={puzzleId} pieceId={pieceId}></TurtlePiece>}

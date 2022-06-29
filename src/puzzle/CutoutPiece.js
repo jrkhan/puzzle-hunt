@@ -1,6 +1,5 @@
 
-import { Engine, EffectWrapper, Texture, AssetsManager, Scene, Mesh, MeshBuilder, Vector4, StandardMaterial, DirectionalLight, Camera, Vector3, ArcRotateCamera, HemisphericLight, Color4, serializeAsColorCurves, Vector2 } from "@babylonjs/core";
-import Container from '@mui/material/Container';
+import { Engine, Texture, AssetsManager, Scene, Mesh, MeshBuilder, Vector4, StandardMaterial, Vector3, ArcRotateCamera, HemisphericLight, Color4, Vector2 } from "@babylonjs/core";
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useTheme } from '@mui/material/styles';
@@ -24,7 +23,7 @@ export default function Render({x, y, cols, rows}) {
             cols: cols,
             rows: rows
         })
-    }, [])
+    }, [x, y, cols, rows, theme.background])
     
     return (
         <StyledCanvas ref={canvasRef}></StyledCanvas>

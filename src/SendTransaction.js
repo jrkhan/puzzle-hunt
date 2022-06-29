@@ -1,18 +1,11 @@
-import React, {useReducer, useRef, useState} from "react"
+import React, {useState} from "react"
 import * as fcl from "@onflow/fcl"
-import styled from 'styled-components'
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import CardHeader from '@mui/material/CardHeader';
 import Code from "react-highlight";
 import {signIt} from './functions/ConfirmMessage'
-
-const Header = styled.div`
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
-`
 
 const bootstrapCollection = `\
 import NonFungibleToken from 0xNonFungibleToken
