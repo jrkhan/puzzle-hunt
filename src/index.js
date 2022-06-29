@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import * as fcl from "@onflow/fcl"
 import App from './App';
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import '@fontsource/roboto/300.css';
 
@@ -20,7 +20,7 @@ fcl.config({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <HashRouter><App /></HashRouter>
+    <BrowserRouter><App /></BrowserRouter>
   </React.StrictMode>
 );
 
