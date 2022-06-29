@@ -1,6 +1,6 @@
 {
   "name": "fuzzle-hunt",
-  "homepage": ".",
+  "homepage": "https://jrkhan.github.io/puzzle-hunt",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
