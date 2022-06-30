@@ -1,8 +1,6 @@
-import NonFungibleToken from "../contracts/NonFungibleToken.cdc"
-import FuzzlePieceV2 from "../contracts/FuzzlePieceV2.cdc"
-import MetadataViews from "../contracts/MetadataViews.cdc"
-
-// This transaction configures an account to hold Kitty Items.
+import NonFungibleToken from 0xNonFungibleToken
+import FuzzlePieceV2 from 0xFuzzlePieceV2
+import MetadataViews from 0xMetadataViews
 
 transaction {
     prepare(signer: AuthAccount) {

@@ -1,16 +1,23 @@
-import collectionTransaction from "./create_collection.cdc";
+import collectionTransactionAddr from "./create_collection.cdc";
+import * as fcl from "@onflow/fcl"
 
-export default function CreateCollection() {
+let collectionTx = ""
+
+export default async function CreateCollection(whileWaiting) {
+    if (!collectionTx) {
+        collectionTx = await (await fetch(collectionTransactionAddr)).text()
+    }
     try {
         const txId = await fcl.mutate({
-        cadence: collectionTransaction,
+        cadence: collectionTx,
         proposer: fcl.currentUser,
         payer: fcl.currentUser,
         limit: 50
         })
-        const res = await fcl.tx(txId).onceSealed();
-        console.log(res)
-        return res
+        if (whileWaiting) {
+            whileWaiting()
+        }
+        return txId
     } catch (error) {
         console.error(error)
     }

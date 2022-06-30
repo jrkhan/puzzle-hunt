@@ -1,6 +1,6 @@
 {
   "name": "fuzzle-hunt",
-  "homepage": ".",
+  "homepage": "https://puzzle-hunt.netlify.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

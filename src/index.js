@@ -10,7 +10,7 @@ fcl.config({
   "accessNode.api": process.env.REACT_APP_FCL_ENDPOINT,
   "challenge.handshake": "https://flow-wallet-testnet.blocto.app/authn",
   "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn",
-  "app.detail.title": "Test App",
+  "app.detail.title": "Puzzle Hunt!",
   "app.detail.icon": "https://placekitten.com/g/200/200",
   "0xNonFungibleToken": process.env.REACT_APP_NFT_ADDRESS,
   "0xFuzzlePieceV2": process.env.REACT_APP_FUZZLE_ADDRESS,
