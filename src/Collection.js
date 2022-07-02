@@ -57,7 +57,7 @@ const CollectionStatus = ({puzzleId}) => {
                 })
             }
         })
-    }, [user])
+    }, [user, puzzleId])
     
     return (
         <Card>
