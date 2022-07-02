@@ -8,35 +8,50 @@ import CreateCollection from "../transactions/CreateCollection"
 import * as fcl from "@onflow/fcl"
 
 
-
-
-
-
 function Mint({mintId}) {
     let [err, setErr] = useState(null)
     let [pieceData, setPieceData] = useState(null)
     let [piece, setPiece] = useState(<span></span>)
-    let [mintTx, setMintTx] = useState(null)
     let [claimFlowInProgress, setInProgress] = useState(false)
     let [waitForTxSnack, setWaitForTxSnack] = useState(false)
     let [newlyFoundPiece, setNewlyFoundPiece] = useState(false)
     let [isCreatingCollection, setCreatingCollection] = useState(false)
+    let [isPreMint, setPreMint] = useState()
+    let [txStatus, setTxStatus] = useState("awaiting approval");
 
     let ClaimFlow = async () => {
         setInProgress(true)
         await fcl.authenticate()
         let has = await HasCollection()
         if (!has) {
-            let txId = await CreateCollection()
+            // collection does not exist yet for the current user
             setCreatingCollection(true)
+            let txId = await CreateCollection()
+            setTxStatus("sending transaction")
+            fcl.tx(txId).subscribe(status =>{
+                console.log(status)
+                let ss = status.statusString
+                if (ss) {
+                    setTxStatus(ss)
+                }
+            });
             await fcl.tx(txId).onceSealed();
             setCreatingCollection(false)
         }
+        setPreMint(true)
         let val = await DoMint(mintId)
-        setMintTx(val)
+        setPreMint(false)
         setWaitForTxSnack(true)
+        setTxStatus("PENDING")
+        fcl.tx(val).subscribe(status =>{
+            //console.log(status)
+            let ss = status.statusString
+            if (ss) {
+                setTxStatus(ss)
+            }
+        });
         await fcl.tx(val).onceSealed()
-        nav("/collection", {replace: true})
+        nav("/collection/puzzle/" + pieceData.puzzleID, {replace: true})
         setInProgress(false)
     }
 
@@ -47,7 +62,9 @@ function Mint({mintId}) {
     }
 
     let handleClosed = (event) => {
-        event.preventDefault()
+        if (event) {
+            event.preventDefault()
+        }
         setWaitForTxSnack(false)
     }
     let handleErrClosed = (event) => {
@@ -104,14 +121,18 @@ function Mint({mintId}) {
                     You found a piece!
             </Alert>
         </Snackbar>
+        
+        <Snackbar open={isCreatingCollection}>
+            <Alert severity="info" sx={{ width: '100%' }}>Bootstrapping your puzzle collection! <br />
+            Status: {txStatus}</Alert>
+        </Snackbar>
+        <Snackbar open={isPreMint}>
+            <Alert severity="info" sx={{ width: '100%' }}>Requesting a signed message to claim your piece!</Alert>
+        </Snackbar>
         <Snackbar open={waitForTxSnack} autoHideDuration={10000} onClose={handleClosed}>
             <Alert severity="info" sx={{ width: '100%' }}>
-                    Waiting for tx {mintTx} to be sealed!
-            </Alert>
-        </Snackbar>
-        <Snackbar open={isCreatingCollection}>
-            <Alert severity="info" sx={{ width: '100%' }}>
-                    Bootstrapping your puzzle collection! Please hold...
+                    Waiting for minting transaction to be SEALED
+                    Status: {txStatus}
             </Alert>
         </Snackbar>
         <Snackbar open={err} autoHideDuration={10000} onClose={handleErrClosed}>

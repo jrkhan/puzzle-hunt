@@ -10,8 +10,8 @@ async function PieceData(address, id) {
         let user = await fcl.currentUser.snapshot()
         address = user.addr
     }
-    console.log(address)
-    console.log(id)
+    //console.log(address)
+    //console.log(id)
     const res = await fcl.query({
         cadence: pq,
         args: (arg, t) => [

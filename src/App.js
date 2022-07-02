@@ -36,7 +36,7 @@ function App() {
           <Route path="piece/:pieceId" element={<Piece />} />
           <Route path="blockTest" element={<BlockTest />} />
           <Route path="paperTest" element={<PaperTest />} />
-          <Route path="collection" element={<Collection />} />
+          <Route path="collection/puzzle/:puzzleId" element={<Collection />} />
           <Route path="mint/:mintId" element={<MintRoute />} />
         </Routes>
       </Container>
@@ -108,6 +108,7 @@ const MintRoute = () => {
  }
 
 const Collection = () => {
-    return <CollectionStatus />
+    let { puzzleId } = useParams()
+    return <CollectionStatus puzzleId={puzzleId} />
 }
 export default App;

@@ -4,10 +4,12 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import { MenuItem } from "@mui/material";
 
 const SignInOutButton = ({ user: { loggedIn } }) => {
-  const signInOrOut = async (event) => {
+
+  const signInOrShowMenu = async (event) => {
     event.preventDefault()
 
     if (loggedIn) {
+      // show menu
       fcl.unauthenticate()
     } else {
       fcl.authenticate()
@@ -15,7 +17,7 @@ const SignInOutButton = ({ user: { loggedIn } }) => {
   }
 
   return (
-    <MenuItem onClick={signInOrOut}> 
+    <MenuItem onClick={signInOrShowMenu}> 
      {loggedIn? <AccountCircle /> : "Sign In"}
     </MenuItem>
   )
