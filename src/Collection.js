@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Piece } from "./piece/Piece"
 import * as fcl from "@onflow/fcl"
 import {PieceData} from './queries/PieceQuery'
+import LookupViewbox from "./puzzle/Viewbox";
 
 
 async function process(puzzleId) {
@@ -66,7 +67,7 @@ const CollectionStatus = ({puzzleId}) => {
         {collectionStatus === "Not found" &&
             <Button>Start Collection</Button>
         }
-        <svg viewBox="0 0 1800 1200">
+        <svg viewBox={LookupViewbox(puzzleId)}>
         {pieces}
         </svg>
         </Card>
