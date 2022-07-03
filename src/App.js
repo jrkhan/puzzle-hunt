@@ -9,6 +9,7 @@ import CollectionStatus from './Collection'
 import { Grid, Paper } from '@mui/material';
 import { Routes, Route, useParams } from "react-router-dom";
 import TestCanvas from './paper/TestPaper';
+import Landing from './pages/Landing';
 
 const darkTheme = createTheme({
   palette: {
@@ -32,7 +33,7 @@ function App() {
        <Nav />
       <Container>
         <Routes>
-          <Route path="/" element={<BlockTest />} />
+          <Route path="/" element={<Landing />} />
           <Route path="piece/:pieceId" element={<Piece />} />
           <Route path="blockTest" element={<BlockTest />} />
           <Route path="paperTest" element={<PaperTest />} />

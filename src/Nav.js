@@ -28,7 +28,7 @@ const Nav = () => {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            Puzzle Hunt
+            Puzzle Alley
           </Typography>
           
           <Box sx={{ flexGrow: 1 }} />
