@@ -95,7 +95,7 @@ export default function Mark({contentAddr}) {
             return <Markdown options={{overrides: {...defaultOverrides}}}>{con}</Markdown>   
         })
         .then(setContent)
-    }, [])
+    }, [contentAddr])
     
 
     
