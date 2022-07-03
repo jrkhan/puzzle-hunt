@@ -1,13 +1,53 @@
-import * as React from 'react';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import User from './User';
+import { useState } from 'react';
+import { Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SwipeableDrawer, Toolbar } from '@mui/material';
+import { Extension, Home, Label } from '@mui/icons-material';
+import { NavLink } from 'react-router-dom';
+
+
+
 
 const Nav = () => {
+  let [mainNavOpen, setMainNavOpen] = useState(false)
+
+  const toggleDrawer = () => {
+    setMainNavOpen(!mainNavOpen)
+  };
+
+  const mainNav = <Box>
+            <Toolbar><Typography>Puzzle Alley</Typography></Toolbar>
+            <Divider />
+            <List>
+              <ListItem disablePadding>
+              <NavLink to="/">
+                <ListItemButton>
+                  <ListItemIcon>
+                    <Home />
+                  </ListItemIcon>
+                  <ListItemText primary="Home" />
+                </ListItemButton>
+              </NavLink>
+              </ListItem>
+              <ListItem disablePadding>
+              <NavLink to="/collection/puzzle/2">
+                <ListItemButton>
+                  <ListItemIcon>
+                    <Extension />
+                  </ListItemIcon>
+                  <ListItemText primary="Collection" />
+                </ListItemButton>
+              </NavLink>
+              </ListItem>
+            </List>
+          </Box>
+  
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -19,8 +59,22 @@ const Nav = () => {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={toggleDrawer}
           >
             <MenuIcon />
+            <SwipeableDrawer
+              anchor="left"
+              variant="temporary"
+              open={mainNavOpen}
+              onOpen={toggleDrawer}
+              onClose={toggleDrawer}
+              sx={{
+                display: { boxSizing: 'border-box', width: "240px" },
+              }}
+              >
+
+              {mainNav}
+            </SwipeableDrawer>
           </IconButton>
           <Typography
             variant="h6"

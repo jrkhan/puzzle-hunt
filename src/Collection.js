@@ -1,13 +1,19 @@
 
-import { Button, Chip, Card, CardHeader } from "@mui/material"
+import { Button, Chip, Card, CardHeader, IconButton } from "@mui/material"
 import ExtensionIcon from '@mui/icons-material/Extension';
 import {HasCollection, PieceIds} from './queries/CollectionQuery'
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Piece } from "./piece/Piece"
 import * as fcl from "@onflow/fcl"
+
 import {PieceData} from './queries/PieceQuery'
 import LookupViewbox from "./puzzle/Viewbox";
+import styled from "styled-components";
+import { PhotoCamera } from "@mui/icons-material";
 
+let HiddenInput = styled.input`
+display: none;
+`;
 
 async function process(puzzleId) {
     let res = await PieceIds()
@@ -33,6 +39,10 @@ function collectionMessage(np) {
     else {
         return "No pieces in collection yet!"
     }
+}
+
+function handleCapture(e) {
+    e.preventDefault()
 }
 
 const CollectionStatus = ({puzzleId}) => {
@@ -61,6 +71,7 @@ const CollectionStatus = ({puzzleId}) => {
     }, [user, puzzleId])
     
     return (
+        <Fragment>
         <Card>
         <CardHeader title="Collection Status" />
         <Chip icon={<ExtensionIcon />} label={collectionStatus}></Chip>
@@ -71,6 +82,25 @@ const CollectionStatus = ({puzzleId}) => {
         {pieces}
         </svg>
         </Card>
+        <Card>
+            <span>
+        <HiddenInput
+            accept="image/*"
+            id="icon-button-file"
+            type="file"
+            capture="environment"
+            onChange={handleCapture}
+          />
+            <IconButton
+                color="primary"
+                aria-label="upload picture"
+                component="span"
+                >
+              <PhotoCamera fontSize="large" color="primary" />
+            </IconButton>
+            </span>
+        </Card>
+        </Fragment>
     )
 }
 

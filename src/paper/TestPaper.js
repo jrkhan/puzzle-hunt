@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import Paper from "paper"
+//import Paper from "paper"
 import styled from "styled-components";
 
 const StyledCanvas = styled.canvas`
@@ -11,8 +11,9 @@ const StyledCanvas = styled.canvas`
 export default function TestCanvas() {
     let cvs = useRef()
     useEffect(()=>{
+        /*
         Paper.setup(cvs.current)
-
+        
         let r = new Paper.Rectangle({x: 50, y:50, width:75, height:75})
         var path = new Paper.Path();
 		// Give the stroke a color
@@ -37,7 +38,7 @@ export default function TestCanvas() {
         let p = new Paper.Path.Rectangle(r)
         p.strokeColor = 'black'
 		// Draw the view now:
-		Paper.view.draw();
+		Paper.view.draw();*/
     },[])
     return (
         <StyledCanvas ref={cvs} data-paper-resize="true"></StyledCanvas>

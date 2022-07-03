@@ -4,7 +4,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import { MenuItem, Menu, Avatar, Divider, ListItemIcon } from "@mui/material";
 import Logout from '@mui/icons-material/Logout';
 
-const SignInOutButton = ({ user: { loggedIn } }) => {
+const SignInOutButton = ({ user: { addr, loggedIn } }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -69,10 +69,7 @@ const SignInOutButton = ({ user: { loggedIn } }) => {
     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
   >
     <MenuItem>
-      <Avatar /> Profile
-    </MenuItem>
-    <MenuItem>
-      <Avatar /> My account
+      <Avatar />Flow Address: {addr}
     </MenuItem>
     <Divider />
     <MenuItem onClick={handleLogout}>

@@ -12,6 +12,7 @@ function Mint({mintId}) {
     let [err, setErr] = useState(null)
     let [pieceData, setPieceData] = useState(null)
     let [piece, setPiece] = useState(<span></span>)
+    let [checkingForPiece, setCheckingForPiece] = useState(true)
     let [claimFlowInProgress, setInProgress] = useState(false)
     let [waitForTxSnack, setWaitForTxSnack] = useState(false)
     let [newlyFoundPiece, setNewlyFoundPiece] = useState(false)
@@ -82,7 +83,7 @@ function Mint({mintId}) {
             {
                 setPieceData(p)
             }
-            
+            setCheckingForPiece(false)
         }).catch(setErr)
 
     }, [mintId])
@@ -97,8 +98,9 @@ function Mint({mintId}) {
 
     return (
         <Card>
-        {pieceData && <CardHeader title="You found a piece!" />}
-        {!pieceData && <CardHeader title="No piece at this address" />}
+        {checkingForPiece && <CardHeader title="Checking for piece..." />}
+        {!checkingForPiece && pieceData && <CardHeader title="You found a piece!" />}
+        {!checkingForPiece && !pieceData && <CardHeader title="No piece at this address" />}
         <Grid
            container
            spacing={0}
@@ -112,7 +114,7 @@ function Mint({mintId}) {
             {piece}
             
             </Container>
-            {pieceData && <Button disabled={claimFlowInProgress} onClick={handleMintRequest}>Claim</Button>}
+            {pieceData && <Button variant="contained" size="large" disabled={claimFlowInProgress} onClick={handleMintRequest}>Add to my Collection</Button>}
             </Grid>   
             
         </Grid> 
