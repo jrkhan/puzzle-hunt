@@ -5,4 +5,4 @@ Scan the QR code with the camera on your phone and click the link that pops up. 
 
 There are a total of sixteen puzzle pieces hidden throughout JPIC.  Find them all before the con ends and then return to the Rose Cat Khan booth to claim a signed limited edition art print as your prize!
 
-![ExampleCode](https://storage.googleapis.com/flow-puzzle-hunt/qr-home-page-qr.png)
+![ExampleCode](https://storage.googleapis.com/flow-puzzle-hunt/qr-home-320.png)
