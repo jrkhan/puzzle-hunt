@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import User from './User';
 import { useState } from 'react';
 import { Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SwipeableDrawer, Toolbar } from '@mui/material';
-import { Extension, Home, Label } from '@mui/icons-material';
+import { Extension, Home } from '@mui/icons-material';
 import { NavLink } from 'react-router-dom';
 
 
