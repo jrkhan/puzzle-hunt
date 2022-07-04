@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import * as fcl from '@onflow/fcl'
 import Card from '@mui/material/Card';
-import ReactHighlight from 'react-highlight';
+import ReactHighlight from './ReactHighlightShim';
 import { Button } from '@mui/material';
 
 const GetLatestBlock = () => {

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import CardHeader from '@mui/material/CardHeader';
-import Code from "react-highlight";
+import {Code} from "./ReactHighlightShim";
 import {signIt} from './functions/ConfirmMessage'
 
 const bootstrapCollection = `\

@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import Markdown from 'markdown-to-jsx';
 import Typography from '@mui/material/Typography';
-import Code from "react-highlight";
+import {Code} from "../ReactHighlightShim";
 import {Button, TableCell, Link, Table, TableBody, TableRow, TableFooter, TableHead} from '@mui/material'
 
   const defaultOverrides = {
