@@ -7,8 +7,10 @@ import Mint from './mint/Mint'
 import CollectionStatus from './Collection'
 import { Grid, Paper } from '@mui/material';
 import { Routes, Route, useParams } from "react-router-dom";
+import { lazy } from 'react';
 import TestCanvas from './paper/TestPaper';
-import Landing from './pages/Landing';
+
+const Landing = lazy(() => import('./pages/Landing'));
 
 const darkTheme = createTheme({
   palette: {
