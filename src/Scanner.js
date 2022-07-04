@@ -16,7 +16,7 @@ export default function Scanner() {
         const html5QrCode = new Html5Qrcode("reader");
         let qrCodeSuccessCallback = (decodedText, decodedResult) => {
             if (decodedText.startsWith("https://puzzlealley.com")) {
-                let path = decodedText.replace("https://puzzlealley.com", "")
+                let path = decodedText.replace("https://puzzlealley.com/#", "")
                 cb(path)
             }
         };
@@ -27,6 +27,6 @@ export default function Scanner() {
 
     return <Card><div id="reader" width="100%"></div>
     
-    <img src="https://storage.googleapis.com/flow-puzzle-hunt/see-a-piece.png" />
+    <img alt="cat-qr-hunter" src="https://storage.googleapis.com/flow-puzzle-hunt/see-a-piece.png" />
     </Card>
 }
