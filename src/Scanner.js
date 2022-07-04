@@ -18,6 +18,8 @@ export default function Scanner() {
             if (decodedText.startsWith("https://puzzlealley.com")) {
                 let path = decodedText.replace("https://puzzlealley.com/#", "")
                 html5QrCode.pause(true)
+                html5QrCode.clear()
+                html5QrCode.stop()
                 cb(path)
             }
         };
