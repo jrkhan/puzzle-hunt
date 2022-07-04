@@ -22,7 +22,6 @@ async function process(puzzleId) {
     for (const [key, value] of res.entries()) {
         let pd = await PieceData(null, value)
         if (pd.puzzleId === puzzleId) {
-            console.log("yep " + pd.puzzleId + " matches " + puzzleId)
             pc.push(<Piece key={key} id={value} />)
         }
     } 
@@ -60,7 +59,6 @@ const CollectionStatus = ({puzzleId}) => {
             return
         }
         HasCollection().then(res => {
-            console.log(res)
             if (res) {
                 process(puzzleId).then(pieces=>{
                     setCollection(collectionMessage(pieces.length))

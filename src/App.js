@@ -3,7 +3,6 @@ import {SendTransaction, SendQuery, SignMessage } from './SendTransaction';
 import Container from '@mui/material/Container';
 import Nav from './Nav.js';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Puzzle from './puzzle/IndividualPiece'
 import Mint from './mint/Mint'
 import CollectionStatus from './Collection'
 import { Grid, Paper } from '@mui/material';
@@ -95,7 +94,7 @@ const Piece = () => {
         >
 
           <Grid item xs={12} width="1">
-            <Puzzle pieceId={pieceId} />
+            {pieceId}
           </Grid>   
           
         </Grid> 

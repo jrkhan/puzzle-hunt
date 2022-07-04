@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import GetMint, {DoMint} from "./MintService"
 import { ContainerSingle } from "../piece/Piece.js"
-import { Card, CardHeader, Button, Grid, Container, Snackbar, Alert, Divider } from "@mui/material"
+import { Card, CardHeader, Button, Grid, Container, Snackbar, Alert, Box } from "@mui/material"
 import { useNavigate } from "react-router-dom";
 import { HasCollection } from "../queries/CollectionQuery"
 import CreateCollection from "../transactions/CreateCollection"
@@ -90,8 +90,9 @@ function Mint({mintId}) {
     
     useEffect(() =>{
         if (pieceData && pieceData.puzzleID > 0 && pieceData.pieceID > 0) {
-            setPiece(
+            setPiece(<Box pb={5}>
                 <ContainerSingle pieceId={pieceData.pieceID} puzzleId={pieceData.puzzleID} />
+                </Box>
             )
         }  
     }, [pieceData])
@@ -110,12 +111,13 @@ function Mint({mintId}) {
          >
  
            <Grid item xs={12} width="1">
+            
             <Container maxWidth="sm">
             {piece}
             
             </Container>
-            <Divider />
             {pieceData && <Button variant="contained" size="large" disabled={claimFlowInProgress} onClick={handleMintRequest}>Add to my Collection</Button>}
+     
             </Grid>   
             
         </Grid> 

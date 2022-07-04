@@ -1,6 +1,17 @@
 import styled from "styled-components";
 
 
+const InPuzzlePiece = styled.image`
+    background-image: url(${props => props.src});
+    display: inline;
+    left: ${props => props.left}px;
+    top: ${props => props.top}px;
+    width:${props => props.width}px;
+    height:${props => props.height}px;
+    position: relative;
+    filter: drop-shadow(16px 16px 10px black)
+`
+
 const TurtlePiece = ({puzzleId, pieceId}) => {
     let offset = 0
     const vals = Puzzles[puzzleId-1][pieceId - 1 + offset]
@@ -9,17 +20,14 @@ const TurtlePiece = ({puzzleId, pieceId}) => {
     let left = vals[0]
     let top = vals[1]
     let translate = "translate(" + left + " " + top + ")"
-    const TP = styled.image`
-        background-image: url(${src});
-        display: inline;
-        left: ${vals[0]}px;
-        top: ${vals[1]}px;
-        width:${vals[2]}px;
-        height:${vals[3]}px;
-        position: relative;
-        filter: drop-shadow(16px 16px 10px black)
-    `
-    return <TP href={src} transform={translate}></TP>
+
+    return <InPuzzlePiece href={src} transform={translate}
+        src={src}
+        left={vals[0]}
+        top={vals[1]}
+        width={vals[2]}
+        height={vals[3]}
+        ></InPuzzlePiece>
 }
 
 const SinglePiece = styled.div`

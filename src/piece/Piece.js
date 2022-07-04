@@ -20,7 +20,6 @@ function Piece(props) {
     let id = props.id
     useEffect(() =>{
         PieceData(addr, id).then(res => {
-            console.log(res)
             setPuzzleId(res.puzzleId)
             setPieceId(res.pieceId)
         })
