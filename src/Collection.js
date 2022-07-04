@@ -45,7 +45,7 @@ function handleCapture(e) {
 }
 
 const CollectionStatus = ({puzzleId}) => {
-    const [collectionStatus, setCollection] = useState("Checking collection status...")
+    const [collectionStatus, setCollection] = useState("Checking loging status...")
     const [pieces, setPieces] = useState([])
 
     const [user, setUser] = useState({loggedIn: null})
@@ -58,7 +58,9 @@ const CollectionStatus = ({puzzleId}) => {
             setPieces([])
             return
         }
+        setCollection("Checking collection status...")
         HasCollection().then(res => {
+            setCollection("Retreiving collection...")
             if (res) {
                 process(puzzleId).then(pieces=>{
                     setCollection(collectionMessage(pieces.length))
