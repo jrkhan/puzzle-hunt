@@ -25,7 +25,9 @@ export default function Scanner() {
         
         html5QrCode.start({ facingMode: "environment" }, {fps: 10}, qrCodeSuccessCallback);
         return () => {
-            html5QrCode.stop()
+            if (html5QrCode.isScanning) {
+                html5QrCode.stop()
+            }
         }
     }, [cb])
    
