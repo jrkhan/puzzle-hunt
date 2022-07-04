@@ -10,6 +10,7 @@ import {PieceData} from './queries/PieceQuery'
 import LookupViewbox from "./puzzle/Viewbox";
 import styled from "styled-components";
 import { PhotoCamera } from "@mui/icons-material";
+import {MobileView} from 'react-device-detect';
 
 let HiddenInput = styled.input`
 display: none;
@@ -82,24 +83,30 @@ const CollectionStatus = ({puzzleId}) => {
         {pieces}
         </svg>
         </Card>
-        <Card>
-            <span>
-        <HiddenInput
-            accept="image/*"
-            id="icon-button-file"
-            type="file"
-            capture="environment"
-            onChange={handleCapture}
-          />
-            <IconButton
-                color="primary"
-                aria-label="upload picture"
-                component="span"
-                >
-              <PhotoCamera fontSize="large" color="primary" />
-            </IconButton>
-            </span>
-        </Card>
+        <MobileView>
+            <Card>
+                <span>
+                <label for="icon-button-file">
+                <IconButton
+                        color="primary"
+                        aria-label="upload picture"
+                        component="span"
+                        >
+                <PhotoCamera fontSize="large" color="primary" />
+                    </IconButton>
+                <HiddenInput
+                    accept="image/*"
+                    id="icon-button-file"
+                    type="file"
+                    capture="environment"
+                    onChange={handleCapture}
+                />
+                </label>
+            
+                
+                </span>
+            </Card>
+        </MobileView>
         </Fragment>
     )
 }

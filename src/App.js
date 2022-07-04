@@ -12,6 +12,7 @@ import TestCanvas from './paper/TestPaper';
 
 const Landing = lazy(() => import('./pages/Landing'));
 const Help = lazy(() => import('./pages/Help'));
+const HowToPlay = lazy(() => import('./pages/HowToPlay'));
 
 const darkTheme = createTheme({
   palette: {
@@ -53,6 +54,7 @@ function App() {
           <Route path="piece/:pieceId" element={<Piece />} />
           <Route path="blockTest" element={<BlockTest />} />
           <Route path="paperTest" element={<PaperTest />} />
+          <Route path="how-to-play" element={<Suspense><HowToPlay /></Suspense>} />
           <Route path="collection/puzzle/:puzzleId" element={<Collection />} />
           <Route path="mint/:mintId" element={<MintRoute />} />
           <Route path="help" element={<Suspense><Help /></Suspense>} />

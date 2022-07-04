@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import User from './User';
 import { useState } from 'react';
 import { Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SwipeableDrawer, Toolbar } from '@mui/material';
-import { Extension, Home, QuestionMarkRounded } from '@mui/icons-material';
+import { BugReportRounded, Extension, Home, QuestionMarkRounded } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 
@@ -31,7 +31,12 @@ const Nav = () => {
                   <ListItemIcon ><Home /></ListItemIcon>
                   <ListItemText><Typography variant="nav">Home</Typography></ListItemText>
                 </ListItemButton>
-              
+              </ListItem>
+              <ListItem disablePadding component={Link} to="/how-to-play">
+                <ListItemButton>
+                  <ListItemIcon ><QuestionMarkRounded /></ListItemIcon>
+                  <ListItemText><Typography variant="nav">How To Play</Typography></ListItemText>
+                </ListItemButton>
               </ListItem>
               <ListItem disablePadding component={Link} to="/collection/puzzle/2">
                 <ListItemButton>
@@ -44,7 +49,7 @@ const Nav = () => {
               <ListItem disablePadding component={Link} to="/help">
                 <ListItemButton>
                   <ListItemIcon>
-                    <QuestionMarkRounded />
+                    <BugReportRounded />
                   </ListItemIcon>
                   <ListItemText><Typography variant="nav">Help</Typography></ListItemText>
                 </ListItemButton>
