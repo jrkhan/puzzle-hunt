@@ -4,7 +4,7 @@ import * as fcl from "@onflow/fcl"
 import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import '@fontsource/roboto/300.css';
+import '@fontsource/nunito'
 
 fcl.config({
   "flow.network": "testnet",

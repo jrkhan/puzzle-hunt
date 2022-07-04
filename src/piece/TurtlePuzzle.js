@@ -9,7 +9,7 @@ const InPuzzlePiece = styled.image`
     width:${props => props.width}px;
     height:${props => props.height}px;
     position: relative;
-    filter: drop-shadow(16px 16px 10px black)
+    filter: drop-shadow(4px 4px 3px grey)
 `
 
 const TurtlePiece = ({puzzleId, pieceId}) => {
@@ -35,7 +35,7 @@ background-image: url(${props => imageRoot[props.puzzleIndex] + "/piece-" + prop
 position: relative;
 width: ${props => props.width}px;
 height: ${props => props.height}px;
-filter: drop-shadow(16px 16px 10px black)
+filter: drop-shadow(6px 6px 4px grey)
 `
 
 const TurtlePieceSingle = ({puzzleId, pieceId}) => {
