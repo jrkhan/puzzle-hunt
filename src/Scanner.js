@@ -12,8 +12,8 @@ export default function Scanner() {
          * { id: "id", label: "label" }
          */
         if (devices && devices.length) {
-            devices.forEach(({id: id, label: label}) => {
-                if (label == "environment") {
+            devices.forEach(({id, label}) => {
+                if (label === "environment") {
                     setCameraId(id)
                     return
                 }
@@ -29,6 +29,7 @@ export default function Scanner() {
         if (!cameraId) {
             return
         }
+        
         const html5QrCode = new Html5Qrcode("reader");
         html5QrCode.start(
         cameraId, 
@@ -48,7 +49,7 @@ export default function Scanner() {
         .catch((err) => {
         // Start failed, handle it.
         });
-    }, [cameraId])
+    }, [cameraId, nav])
    
 
     return <div id="reader" width="600px"></div>
