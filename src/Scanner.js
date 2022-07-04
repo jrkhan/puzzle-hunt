@@ -24,6 +24,9 @@ export default function Scanner() {
         };
         
         html5QrCode.start({ facingMode: "environment" }, {fps: 10}, qrCodeSuccessCallback);
+        return () => {
+            html5QrCode.stop()
+        }
     }, [cb])
    
 
