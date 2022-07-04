@@ -15,16 +15,27 @@ const darkTheme = createTheme({
   palette: {
     type: 'light',
     primary: {
-      main: '#1976d2',
+      main: 'rgb(77, 150, 191)', //'#1976d2',
     },
     secondary: {
       main: 'rgb(220, 0, 78)',
     },
     background: {
-      default: '#fff',
-      paper: '#fff',
+      default: '#ffffff',
+      paper: '#ffffff',
     },
   },
+  typography: {
+    nav: {
+      fontFamily: "Roboto",
+      fontWeight: 300,
+      color: "rgb(117, 117, 117)",
+      letterSpacing: "0.0075em",
+      verticalAlign: "middle",
+      alignItems: "center",
+      textAlign: "center"
+    }
+  }
 });
 
 function App() {
@@ -64,7 +75,6 @@ function PaperTest() {
 }
 const BlockTest = () => {
   return (
-    
     <Paper>
       <GetLatestBlock />
       <SendTransaction />

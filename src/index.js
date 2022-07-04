@@ -7,14 +7,16 @@ import reportWebVitals from './reportWebVitals';
 import '@fontsource/roboto/300.css';
 
 fcl.config({
+  "flow.network": "testnet",
   "accessNode.api": process.env.REACT_APP_FCL_ENDPOINT,
-  "challenge.handshake": "https://flow-wallet-testnet.blocto.app/authn",
   "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn",
+  "discovery.wallet.method": "HTTP/POST",
   "app.detail.title": "Puzzle Alley",
   "app.detail.icon": "https://storage.googleapis.com/flow-puzzle-hunt/pa-logo.png",
   "0xNonFungibleToken": process.env.REACT_APP_NFT_ADDRESS,
   "0xFuzzlePieceV2": process.env.REACT_APP_FUZZLE_ADDRESS,
   "0xMetadataViews": process.env.REACT_APP_METADATA_ADDRESS,
+  "service.OpenID.scopes": "email"
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

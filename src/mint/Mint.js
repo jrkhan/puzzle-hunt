@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import GetMint, {DoMint} from "./MintService"
 import { ContainerSingle } from "../piece/Piece.js"
-import { Card, CardHeader, Button, Grid, Container, Snackbar, Alert } from "@mui/material"
+import { Card, CardHeader, Button, Grid, Container, Snackbar, Alert, Divider } from "@mui/material"
 import { useNavigate } from "react-router-dom";
 import { HasCollection } from "../queries/CollectionQuery"
 import CreateCollection from "../transactions/CreateCollection"
@@ -114,6 +114,7 @@ function Mint({mintId}) {
             {piece}
             
             </Container>
+            <Divider />
             {pieceData && <Button variant="contained" size="large" disabled={claimFlowInProgress} onClick={handleMintRequest}>Add to my Collection</Button>}
             </Grid>   
             

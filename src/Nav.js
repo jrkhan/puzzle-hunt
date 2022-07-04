@@ -8,7 +8,7 @@ import User from './User';
 import { useState } from 'react';
 import { Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SwipeableDrawer, Toolbar } from '@mui/material';
 import { Extension, Home } from '@mui/icons-material';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -20,29 +20,26 @@ const Nav = () => {
     setMainNavOpen(!mainNavOpen)
   };
 
-  const mainNav = <Box>
+  const mainNav = <Box 
+    sx={{ width: 250 }}
+    role="presentation">
             <Toolbar><Typography>Puzzle Alley</Typography></Toolbar>
             <Divider />
             <List>
-              <ListItem disablePadding>
-              <NavLink to="/">
+              <ListItem disablePadding component={Link} to="/">
                 <ListItemButton>
-                  <ListItemIcon>
-                    <Home />
-                  </ListItemIcon>
-                  <ListItemText primary="Home" />
+                  <ListItemIcon ><Home /></ListItemIcon>
+                  <ListItemText><Typography variant="nav">Home</Typography></ListItemText>
                 </ListItemButton>
-              </NavLink>
+              
               </ListItem>
-              <ListItem disablePadding>
-              <NavLink to="/collection/puzzle/2">
+              <ListItem disablePadding component={Link} to="/collection/puzzle/2">
                 <ListItemButton>
                   <ListItemIcon>
                     <Extension />
                   </ListItemIcon>
-                  <ListItemText primary="Collection" />
+                  <ListItemText><Typography variant="nav">Collection</Typography></ListItemText>
                 </ListItemButton>
-              </NavLink>
               </ListItem>
             </List>
           </Box>
@@ -69,7 +66,7 @@ const Nav = () => {
               onOpen={toggleDrawer}
               onClose={toggleDrawer}
               sx={{
-                display: { boxSizing: 'border-box', width: "240px" },
+                display: { boxSizing: 'border-box' },
               }}
               >
 
