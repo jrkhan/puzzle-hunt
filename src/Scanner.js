@@ -17,6 +17,7 @@ export default function Scanner() {
         let qrCodeSuccessCallback = (decodedText, decodedResult) => {
             if (decodedText.startsWith("https://puzzlealley.com")) {
                 let path = decodedText.replace("https://puzzlealley.com/#", "")
+                html5QrCode.pause(true)
                 cb(path)
             }
         };
