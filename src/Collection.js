@@ -1,5 +1,5 @@
 
-import { Button, Chip, Card, CardHeader, IconButton } from "@mui/material"
+import { Button, Chip, Card, CardHeader, ListItem, ListItemIcon, ListItemButton, ListItemText, Typography } from "@mui/material"
 import ExtensionIcon from '@mui/icons-material/Extension';
 import {HasCollection, PieceIds} from './queries/CollectionQuery'
 import { Fragment, useEffect, useState } from "react";
@@ -8,13 +8,9 @@ import * as fcl from "@onflow/fcl"
 
 import {PieceData} from './queries/PieceQuery'
 import LookupViewbox from "./puzzle/Viewbox";
-import styled from "styled-components";
-import { PhotoCamera } from "@mui/icons-material";
 import {MobileView} from 'react-device-detect';
-
-let HiddenInput = styled.input`
-display: none;
-`;
+import { CameraAltRounded } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 async function process(puzzleId) {
     let res = await PieceIds()
@@ -39,10 +35,6 @@ function collectionMessage(np) {
     else {
         return "No pieces in collection yet!"
     }
-}
-
-function handleCapture(e) {
-    e.preventDefault()
 }
 
 const CollectionStatus = ({puzzleId}) => {
@@ -84,28 +76,16 @@ const CollectionStatus = ({puzzleId}) => {
         </svg>
         </Card>
         <MobileView>
-            <Card>
-                <span>
-                <label for="icon-button-file">
-                <IconButton
-                        color="primary"
-                        aria-label="upload picture"
-                        component="span"
-                        >
-                <PhotoCamera fontSize="large" color="primary" />
-                    </IconButton>
-                <HiddenInput
-                    accept="image/*"
-                    id="icon-button-file"
-                    type="file"
-                    capture="environment"
-                    onChange={handleCapture}
-                />
-                </label>
-            
-                
-                </span>
-            </Card>
+        <Card>
+        <ListItem disablePadding component={Link} to="/scanner">
+        <ListItemButton>
+            <ListItemIcon>
+            <CameraAltRounded />
+            </ListItemIcon>
+            <ListItemText><Typography variant="nav">Scan a new code!</Typography></ListItemText>
+        </ListItemButton>
+        </ListItem>
+        </Card>
         </MobileView>
         </Fragment>
     )

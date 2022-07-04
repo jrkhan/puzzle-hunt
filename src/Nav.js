@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import User from './User';
 import { useState } from 'react';
 import { Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SwipeableDrawer, Toolbar } from '@mui/material';
-import { BugReportRounded, Extension, Home, QuestionMarkRounded } from '@mui/icons-material';
+import { BugReportRounded, Extension, Home, QuestionMarkRounded, ScannerRounded } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 
@@ -44,6 +44,14 @@ const Nav = () => {
                     <Extension />
                   </ListItemIcon>
                   <ListItemText><Typography variant="nav">Collection</Typography></ListItemText>
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding component={Link} to="/scanner">
+                <ListItemButton>
+                  <ListItemIcon>
+                    <ScannerRounded />
+                  </ListItemIcon>
+                  <ListItemText><Typography variant="nav">Scan A Code!</Typography></ListItemText>
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding component={Link} to="/help">
