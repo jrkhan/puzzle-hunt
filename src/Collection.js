@@ -6,7 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Piece } from "./piece/Piece"
 import * as fcl from "@onflow/fcl"
 
-import {PieceData, PieceDataAll} from './queries/PieceQuery'
+import {PieceDataAll} from './queries/PieceQuery'
 import LookupViewbox from "./puzzle/Viewbox";
 import {MobileView} from 'react-device-detect';
 import { CameraAltRounded } from "@mui/icons-material";

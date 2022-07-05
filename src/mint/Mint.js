@@ -63,12 +63,6 @@ function Mint({mintId}) {
         ClaimFlow(mintId)
     }
 
-    let handleClosed = (event) => {
-        if (event) {
-            event.preventDefault()
-        }
-        setWaitForTxSnack(false)
-    }
     let handleErrClosed = (event) => {
         event.preventDefault()
         setErr(false)
