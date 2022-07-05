@@ -7,6 +7,8 @@ We’re sorry if a bug spoiled your gameplay of Puzzle Alley.  Puzzle Alley is s
 You can also stop by the Rose Cat Khan booth for in-person help. Just ask for Jamil, he's our tech expert!
 
 If you're stressed the app isn't working right, don't worry, all participants in Puzzle Alley at JPIC are still eligible for a prize. :-)
-<p align="center">
+
+
+<div align="center">
 ![BugToButterfly](https://storage.googleapis.com/flow-puzzle-hunt/bugreport-sm.jpg)
-</p>
+</div>

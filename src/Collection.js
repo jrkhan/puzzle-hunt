@@ -6,22 +6,20 @@ import { Fragment, useEffect, useState } from "react";
 import { Piece } from "./piece/Piece"
 import * as fcl from "@onflow/fcl"
 
-import {PieceData} from './queries/PieceQuery'
+import {PieceData, PieceDataAll} from './queries/PieceQuery'
 import LookupViewbox from "./puzzle/Viewbox";
 import {MobileView} from 'react-device-detect';
 import { CameraAltRounded } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
-async function process(puzzleId) {
-    let res = await PieceIds()
-
+async function process(targetPuzzleId) {
+    let allData = await PieceDataAll(null, await PieceIds())
     let pc = []
-    for (const [key, value] of res.entries()) {
-        let pd = await PieceData(null, value)
-        if (pd.puzzleId === puzzleId) {
-            pc.push(<Piece key={key} id={value} />)
+    for (let {id, puzzleId, pieceId} of allData) {
+        if (puzzleId === targetPuzzleId) {
+            pc.push(<Piece key={id} puzzleId={puzzleId} pieceId={pieceId} />)
         }
-    } 
+    }
     return pc
 }
 

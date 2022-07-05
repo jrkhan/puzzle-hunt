@@ -16,14 +16,32 @@ const SingleContainer = styled.div`
 function Piece(props) {
     let [puzzleId, setPuzzleId] = useState()
     let [pieceId, setPieceId] = useState()
+    
+    
     let addr = props.addr
     let id = props.id
     useEffect(() =>{
-        PieceData(addr, id).then(res => {
-            setPuzzleId(res.puzzleId)
-            setPieceId(res.pieceId)
-        })
+        if (addr && id) {
+            PieceData(addr, id).then(res => {
+                setPuzzleId(res.puzzleId)
+                setPieceId(res.pieceId)
+            })
+        }
     }, [addr, id])
+
+    let puzzleIdIn = props.puzzleId
+    let pieceIdIn = props.pieceId
+    useEffect(() =>{
+        if (puzzleIdIn && pieceIdIn) {
+            setPuzzleId(puzzleIdIn)
+            setPieceId(pieceIdIn)
+        }
+        
+    }, [puzzleIdIn, pieceIdIn])
+    
+    
+    
+    
     
     return <Container>
         {puzzleId && <TurtlePiece puzzleId={puzzleId} pieceId={pieceId}></TurtlePiece>}

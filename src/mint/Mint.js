@@ -53,6 +53,7 @@ function Mint({mintId}) {
         });
         await fcl.tx(val).onceSealed()
         nav("/collection/puzzle/" + pieceData.puzzleID, {replace: true})
+        setWaitForTxSnack(false)
         setInProgress(false)
     }
 
@@ -134,7 +135,7 @@ function Mint({mintId}) {
         <Snackbar open={isPreMint}>
             <Alert severity="info" sx={{ width: '100%' }}>Requesting a signed message to claim your piece!</Alert>
         </Snackbar>
-        <Snackbar open={waitForTxSnack} autoHideDuration={10000} onClose={handleClosed}>
+        <Snackbar open={waitForTxSnack}>
             <Alert severity="info" sx={{ width: '100%' }}>
                     Waiting for minting transaction to be SEALED
                     Status: {txStatus}
