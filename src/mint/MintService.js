@@ -16,7 +16,7 @@ async function GetMint(id) {
 async function DoMint(id) {
     // build a request that should trigger minting
     let signed = await signMessage(id)
-    let res = await fetch('https://mint-by-guid-ijlbsclomq-uc.a.run.app', {
+    let res = await fetch(process.env.REACT_APP_MINT_ENDPOINT, {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json'
