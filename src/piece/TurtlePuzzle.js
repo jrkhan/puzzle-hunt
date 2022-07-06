@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 
 const InPuzzlePiece = styled.image`
-    background-image: url(${props => props.src});
     display: inline;
     left: ${props => props.left}px;
     top: ${props => props.top}px;
@@ -16,14 +15,20 @@ const TurtlePiece = ({puzzleId, pieceId}) => {
     let offset = 0
     const vals = Puzzles[puzzleId-1][pieceId - 1 + offset]
     let imgIndex = parseInt(pieceId) + offset
-    let src = imageRoot[puzzleId-1] + "/piece-" + imgIndex + ".png"
+    let bgimage = imageRoot[puzzleId-1] + "piece-" + imgIndex + ".png"
+    let fallbackSrc = backupRoot[puzzleId-1] + "piece-" + imgIndex + ".png"
     let left = vals[0]
     let top = vals[1]
     let translate = "translate(" + left + " " + top + ")"
+    const handleImgErr = (e) => {
+        e.preventDefault()
+        e.target.setAttribute('href', fallbackSrc); 
+    }
 
-    return <InPuzzlePiece href={src} transform={translate}
-        src={src}
+    return <InPuzzlePiece transform={translate}
+        href={bgimage}
         left={vals[0]}
+        onError={handleImgErr}
         top={vals[1]}
         width={vals[2]}
         height={vals[3]}
@@ -31,7 +36,7 @@ const TurtlePiece = ({puzzleId, pieceId}) => {
 }
 
 const SinglePiece = styled.div`
-background-image: url(${props => imageRoot[props.puzzleIndex] + "/piece-" + props.imgIndex + ".png"});
+background-image: url(${props => imageRoot[props.puzzleIndex] + "piece-" + props.imgIndex + ".png"}), url(${props => backupRoot[props.puzzleIndex] + "piece-" + props.imgIndex + ".png"});
 position: relative;
 width: ${props => props.width}px;
 height: ${props => props.height}px;
@@ -47,8 +52,13 @@ const TurtlePieceSingle = ({puzzleId, pieceId}) => {
 }
 
 const imageRoot = [
-    "https://nftstorage.link/ipfs/bafybeido6xzdcaua7lduxu45uews3du6qljtqn63wojbvgqkbiebo37p4u/",
-    "https://nftstorage.link/ipfs/bafybeibqtypgzsxlsh32qjqslsb6yfkijquwtqyae4pbxdo7vhqzdcnrbm/",
+    "https://bafybeido6xzdcaua7lduxu45uews3du6qljtqn63wojbvgqkbiebo37p4u.ipfs.nftstorage.link/",
+    "https://bafybeibqtypgzsxlsh32qjqslsb6yfkijquwtqyae4pbxdo7vhqzdcnrbm.ipfs.nftstorage.link/",
+]
+
+const backupRoot = [
+    "https://ipfs.io/ipfs/bafybeido6xzdcaua7lduxu45uews3du6qljtqn63wojbvgqkbiebo37p4u/",
+    "https://ipfs.io/ipfs/bafybeibqtypgzsxlsh32qjqslsb6yfkijquwtqyae4pbxdo7vhqzdcnrbm/",
 ]
 
 const Puzzles = [[

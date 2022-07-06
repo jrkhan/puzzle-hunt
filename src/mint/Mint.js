@@ -53,13 +53,21 @@ function Mint({mintId}) {
             }
             if (status.error) {
                 setTxError(true)
+                setWaitForTxSnack(false)
                 setInProgress(false)
             }
         });
-        await fcl.tx(val).onceSealed()
-        nav("/collection/puzzle/" + pieceData.puzzleID, {replace: true})
-        setWaitForTxSnack(false)
-        setInProgress(false)
+        try {
+            await fcl.tx(val).onceSealed()
+            nav("/collection/puzzle/" + pieceData.puzzleID, {replace: true})
+            setWaitForTxSnack(false)
+            setInProgress(false)
+        }
+        catch(e) {
+            setTxError(true)
+            setWaitForTxSnack(false)
+            setInProgress(false)
+        }
     }
 
     let nav = useNavigate()
