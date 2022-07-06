@@ -19,6 +19,7 @@ function Mint({mintId}) {
     let [isCreatingCollection, setCreatingCollection] = useState(false)
     let [isPreMint, setPreMint] = useState()
     let [txStatus, setTxStatus] = useState("awaiting approval");
+    let [txError, setTxError] = useState(false)
 
     let ClaimFlow = async () => {
         setInProgress(true)
@@ -50,9 +51,8 @@ function Mint({mintId}) {
             if (ss) {
                 setTxStatus(ss)
             }
-            if (ss === 'SEALED') {
-                nav("/collection/puzzle/" + pieceData.puzzleID, {replace: true})
-                setWaitForTxSnack(false)
+            if (status.error) {
+                setTxError(true)
                 setInProgress(false)
             }
         });
@@ -71,6 +71,10 @@ function Mint({mintId}) {
     let handleErrClosed = (event) => {
         event.preventDefault()
         setErr(false)
+    }
+    let handleTxErrClose = (event) => {
+        event.preventDefault()
+        setTxError(false)
     }
     let autoClaim = (event) => {
         event.preventDefault()
@@ -138,6 +142,11 @@ function Mint({mintId}) {
             <Alert severity="info" sx={{ width: '100%' }}>
                     Waiting for minting transaction to be SEALED
                     Status: {txStatus}
+            </Alert>
+        </Snackbar>
+        <Snackbar open={txError} autoHideDuration={10000} onClose={handleTxErrClose}>
+            <Alert severity="error" sx={{ width: '100%' }}>
+                    There was an error during your transaction! Please try again.
             </Alert>
         </Snackbar>
         <Snackbar open={err} autoHideDuration={10000} onClose={handleErrClosed}>
