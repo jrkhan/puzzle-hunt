@@ -50,6 +50,11 @@ function Mint({mintId}) {
             if (ss) {
                 setTxStatus(ss)
             }
+            if (ss === 'SEALED') {
+                nav("/collection/puzzle/" + pieceData.puzzleID, {replace: true})
+                setWaitForTxSnack(false)
+                setInProgress(false)
+            }
         });
         await fcl.tx(val).onceSealed()
         nav("/collection/puzzle/" + pieceData.puzzleID, {replace: true})
